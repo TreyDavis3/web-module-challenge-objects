@@ -15,8 +15,10 @@ The function should:
   Example createMenuItem('tacos', 8, 'Lunch') should return {name: 'tacos', price: 8, category: 'Lunch'}
 */
 
-function createMenuItem(/*Your code here*/){
-    /*Your code here*/
+function createMenuItem(name, price, category){ 
+  return {
+    'name': name, 'price': price,'category': category
+  }
 }
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 1b: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -45,8 +47,19 @@ Using the burger object below do the following:
 */
 const burger = {
   name: "Burger", 
-  price: 18, 
-  category: "Lunch", 
+  price: 18,
+  category: "Lunch",
+  discount: function (code) { 
+    if (code === 'teacher') {
+        return this.price * .75;
+    } else if (code === 'student') {
+        return this.price * .75;
+    } else if (code === 'public') {
+      return this.price * .90;
+    } else {
+      return null;
+    }
+  }
   
 }
 
@@ -68,7 +81,11 @@ const reviews = [
 Using the reviews array above:
   1. log only Julius' feedback to the console - no function needed 
 */
-
+for(let i=0; i < reviews.length; i++) {
+  if (reviews[i].name === 'Julius') {
+    console.log(reviews[i].feedback)
+  }
+}
 
 
 
@@ -78,7 +95,8 @@ Reyna's feedback is missing! Use what you know to do the following: (no function
   2. log the reviews array to the console to check your work
 */
 
-
+reviews[7].feedback = "this place is chill with really cool people, great for getting work done on weekdays";
+console.log(reviews);
 
 
 
@@ -91,8 +109,14 @@ Write a function that creates an object with name, rating, feedback, add the new
   4. should return the resulting array
 */
 
-function addReview(/*Your Code Here */){
-  /*Your Code Here */
+function addReview(na, name, rating, feedback){
+  
+  na.push({
+    name: name, 
+    rating: rating, 
+    feedback: feedback 
+  })
+  return na
 }
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 6: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -106,8 +130,8 @@ Use the getReviewByIndex function below to do the following:
 */
 
 
-function getReviewByIndex(/*Your code here*/) {
-  /*Your code here*/
+function getReviewByIndex(na,i) {
+    return `${na[i].name} gave the restaurant a ${na[i].rating} star review, and their feedback was: ${na[i].feedback}`
 }
 
 
@@ -124,9 +148,10 @@ Use the getLastReview function below to do the following:
   For example: getLastReview(reviews) would return: "Reyna gave the restaurant a 3.5 star review, and their feedback was: this place is chill with really cool people, great for getting work done on weekdays".
 */
 
-
-function getLastReview(/*Your code here*/) {
-  /*Your code here*/
+//INPUT:  an array called na for "new array"
+function getLastReview(na) {
+  const i = na.length-1;
+  return `${na[i].name} gave the restaurant a ${na[i].rating} star review, and their feedback was: ${na[i].feedback}`
 } 
 
 
